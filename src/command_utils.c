@@ -6,7 +6,7 @@
 /*   By: eelkabia <eelkabia@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:03:49 by eelkabia          #+#    #+#             */
-/*   Updated: 2025/04/20 18:17:01 by eelkabia         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:49:27 by eelkabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ void	execve_input(t_utils *u, char **split)
 	if (!split || !init_pipe_exec(&nc, &cp, split, u->dir))
 		return ;
 	init_sigactions(sa);
+	//if (u->dir->heredoc_fd != -1)
+	//{
+	//	if (dup2(u->dir->heredoc_fd, STDIN_FILENO) == -1)
+	//		perror("dup2");
+	//	close(u->dir->heredoc_fd);
+	//}
 	execute_pipes(split, u, nc, cp);
 	cleanup_pipe_exec(cp, split, sa);
 }

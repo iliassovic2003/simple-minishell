@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izahr <izahr@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eelkabia <eelkabia@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 11:59:47 by eelkabia          #+#    #+#             */
-/*   Updated: 2025/04/22 00:27:06 by izahr            ###   ########.fr       */
+/*   Updated: 2025/05/03 16:10:55 by eelkabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ typedef enum e_stat
 	NO_LOOP = 1
 }								t_stat;
 
+typedef struct s_heredoc_info {
+	char *delimiter;
+	int   fd_read;
+	struct s_heredoc_info *next;
+} t_heredoc_info;
+//
+
+
 typedef struct s_env
 {
 	char						*var;
@@ -46,6 +54,7 @@ typedef struct s_dir
 	char						*oldir;
 	char						*dir;
 	char						*home;
+	int 						heredoc_fd;
 	long						exit_status_;
 }								t_dir;
 

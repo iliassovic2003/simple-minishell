@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_utils_01.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izahr <izahr@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eelkabia <eelkabia@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:19:16 by eelkabia          #+#    #+#             */
-/*   Updated: 2025/04/30 21:15:41 by izahr            ###   ########.fr       */
+/*   Updated: 2025/05/03 15:49:04 by eelkabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ void	check_redirections(char *str)
 	i = -1;
 	while (tokens[++i])
 	{
-		if (!ft_strcmp(tokens[i], "<<") && tokens[i + 1])
-		{
-			if (handle_heredoc(tokens[i + 1], tokens))
-				return ;
-			i++;
-		}
-		else if ((!ft_strcmp(tokens[i], ">") || !ft_strcmp(tokens[i], ">>")
+		//while (!ft_strcmp(tokens[i], "<<") && tokens[i + 1])
+		//{
+		//	if (handle_heredoc(tokens[i + 1], tokens))
+		//		return ;
+		//	i++;
+		//}
+		if ((!ft_strcmp(tokens[i], ">") || !ft_strcmp(tokens[i], ">>")
 				|| !ft_strcmp(tokens[i], "<")) && tokens[i + 1])
 		{
 			handle_redirection(tokens[i], tokens[i + 1]);

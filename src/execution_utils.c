@@ -6,7 +6,7 @@
 /*   By: eelkabia <eelkabia@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 15:49:32 by eelkabia          #+#    #+#             */
-/*   Updated: 2025/04/20 18:17:01 by eelkabia         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:50:35 by eelkabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ int	try_execute(char **args, t_env **env, t_dir *dir)
 		return (1);
 	}
 	env_arr = convert_env(*env);
+	//printf("heredoc_fd: %d\n", dir->heredoc_fd);
+	if (dir->heredoc_fd > -1)
+	{
+		if (dup2(dir->heredoc_fd, STDIN_FILENO) == -1)
+			perror("dup2");
+		close(dir->heredoc_fd);
+	}
 	if (env_arr && execve(path, args, env_arr) == -1)
 	{
 		free(path);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_utils copy.c                                  :+:      :+:    :+:   */
+/*   pipe_utils_02.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izahr <izahr@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eelkabia <eelkabia@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:18:14 by eelkabia          #+#    #+#             */
-/*   Updated: 2025/04/20 22:33:17 by izahr            ###   ########.fr       */
+/*   Updated: 2025/05/03 16:34:53 by eelkabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void	setup_child_io(int pp[2], int np[2], t_utils *u)
 
 void	handle_child_process(char **s, t_utils *u, int pp[2], int np[2])
 {
+
 	setup_child_io(pp, np, u);
 	ft_process(s[u->i], NULL, 0, u);
 	exit(u->dir->exit_status_);
