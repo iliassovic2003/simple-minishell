@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_utils_01.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izahr <izahr@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eelkabia <eelkabia@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:08:49 by eelkabia          #+#    #+#             */
-/*   Updated: 2025/04/20 23:01:50 by izahr            ###   ########.fr       */
+/*   Updated: 2025/05/03 17:51:06 by eelkabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,29 @@ void	setup_signals(t_signal *config)
 	sigaction(SIGQUIT, &config->sa_quit, NULL);
 }
 
+//int	handle_signals(int status, int fd, char **tokens)
+//{
+//	if (WTERMSIG(status) == SIGINT || WTERMSIG(status) == SIGQUIT)
+//	{
+//		close(fd);
+//		free_array(tokens);
+//		return (1);
+//	}
+//	return (0);
+//}
+
 int	handle_signals(int status, int fd, char **tokens)
 {
-	if (WTERMSIG(status) == SIGINT || WTERMSIG(status) == SIGQUIT)
+	if (WIFSIGNALED(status))
 	{
-		close(fd);
-		free_array(tokens);
-		return (1);
+		int sig = WTERMSIG(status);
+		if (sig == SIGINT || sig == SIGQUIT)
+		{
+			close(fd);
+			free_array(tokens);
+			write(STDOUT_FILENO, "\n", 1); // new line for shell prompt
+			return (1);
+		}
 	}
 	return (0);
 }

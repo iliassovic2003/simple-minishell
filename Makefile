@@ -11,7 +11,7 @@ SRC = $(shell find src/*.c)
 OBJS = $(SRC:.c=.o)
 
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror -Iinclude
+CFLAGS = -Wall -Wextra -Werror -Iinclude
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: eelkabia <eelkabia@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:21:50 by eelkabia          #+#    #+#             */
-/*   Updated: 2025/05/03 16:45:35 by eelkabia         ###   ########.fr       */
+/*   Updated: 2025/05/03 17:56:24 by eelkabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ int handle_heredoc(char *delimiter, t_dir *dir, t_env *my_env, char **line)
 	int fd_pipe[2];
 	pid_t pid;
 	int status;
-
+	
+	(void)my_env;
+	(void)dir;
 	if (pipe(fd_pipe) == -1)
 	{
 		perror("pipe");
@@ -71,6 +73,7 @@ void	history_nd_process(char **line, t_dir *dir, t_env **my_env,
 	add_history(*line);
 	// if (<<) dir heredoc here
 	char *delimiter = *line;
+	dir->heredoc_fd = -1;
 	while ((delimiter = strstr(delimiter, "<<")) != NULL)
 	{
 		delimiter += 2; // Move past "<<"
