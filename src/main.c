@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izahr <izahr@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: eelkabia <eelkabia@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:01:05 by eelkabia          #+#    #+#             */
-/*   Updated: 2025/04/22 00:26:55 by izahr            ###   ########.fr       */
+/*   Updated: 2025/05/06 19:16:51 by eelkabia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int ac, char **av, char **env)
 	update_directory(&dir, my_env);
 	while (!status)
 	{
-		line = readline("✧ mi/sh ➤ ");
+		line = readline("✧ mi/sh > ");
 		if (g_signal_global == SIGINT)
 			dir.exit_status_ = 130;
 		if (!line && printf("exit\n"))
