@@ -57,9 +57,9 @@ mi/sh> exit 42
 
 - Pipes (|) and redirections (>, >>, <, <<)
 
-- Environment variables ($VAR) and special variables ($?)
+- Environment variables that starts with $ and handling exit status
 
-- Signal handling (Ctrl-C, Ctrl-D, Ctrl-)
+- Signal handling (Ctrl-C, Ctrl-D, Ctrl-\\)
 
 - Built-in commands: echo, cd, pwd, export, unset, env, exit
 
